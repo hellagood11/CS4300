@@ -1,6 +1,7 @@
 """Homework 1 Task 2"""
 import pytest
 
+#create methods to be tested for int, float, string, and bool
 def intAddition():
     return 3 + 3
 
@@ -13,9 +14,9 @@ def stringAddition():
 def booleanMethod():
     return (4 == 5)
 
+#create methods to test the data types that the above methods return
 def test_intAddition():
     assert isinstance(intAddition(), int)
-
 
 def test_floatAddition():
     assert isinstance(floatAddition(), float)
