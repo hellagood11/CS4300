@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('bookings.urls')),
+    path('', RedirectView.as_view(pattern_name='movie_list', permanent = False)), # redirect to the movies page by default
 ]
