@@ -20,3 +20,8 @@ class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+#Create a view function for movie list
+def movie_list(request):
+    movies = Movie.objects.all()
+    return render(request, 'bookings/movie_list.html', {'movies':movies})
