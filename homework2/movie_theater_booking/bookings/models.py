@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+#create movie class with attributes of title, description, release date and duration
 class Movie(models.Model):
     title = models.CharField(max_length = 255)
     description = models.TextField()
@@ -12,6 +13,7 @@ class Movie(models.Model):
     def __str__(self):
         return self.title
 
+#create seat class with attribute of seat number and if it is booked
 class Seat(models.Model):
     seat_number = models.CharField(max_length= 10, unique = True)
     is_booked = models.BooleanField(default = False)
@@ -19,6 +21,7 @@ class Seat(models.Model):
     def __str__(self):
         return self.seat_number
 
+#create booking class with attributes of the user who booked it, movie booked, seat booked, and date of movie
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
