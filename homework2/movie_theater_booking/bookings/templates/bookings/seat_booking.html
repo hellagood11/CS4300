@@ -1,0 +1,24 @@
+{% extends 'bookings/base.html' %}
+
+{% block title %}Book Seats for {{ movie.title }}{% endblock %}
+
+{% block content %}
+<div class = "container mt-4">
+    <h2>Seats for {{ movie.title }}</h2>
+    <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+    <p><strong>Duration:</strong> {{ movie.duration }} minutes</p>
+
+    <h3>Select a seat:</h3>
+    <div class="row">
+        {% for seat in seats %}
+            <div class="col-md-2">
+                {% if seat.is_booked %}
+                    <button class="btn btn-danger" disabled> {{ seat.seat_number }}</button>
+                {% else %}
+                    <a href="{% url 'confirm_booking' seat.id %}" class="btn btn-success">{{ seat.seat_number }}</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
