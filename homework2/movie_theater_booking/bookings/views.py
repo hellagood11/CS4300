@@ -25,3 +25,8 @@ class BookingViewSet(viewsets.ModelViewSet):
 def movie_list(request):
     movies = Movie.objects.all()
     return render(request, 'bookings/movie_list.html', {'movies':movies})
+
+def seat_booking(request, movie_id):
+    movie = get_object_or_404(Movie, id=movie_id)
+    seats = Seat.objects.filter(movie = movie)
+    return render(request, 'bookings/seat_bookings.html', {'movie': movie, 'seats':seats})
