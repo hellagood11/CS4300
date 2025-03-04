@@ -17,6 +17,7 @@ class Movie(models.Model):
 class Seat(models.Model):
     seat_number = models.CharField(max_length= 10, unique = True)
     is_booked = models.BooleanField(default = False)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="seats", null=True, blank=True)  # Add this if seats are tied to a movie
 
     def __str__(self):
         return self.seat_number
